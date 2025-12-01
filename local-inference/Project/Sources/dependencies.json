@@ -1,0 +1,13 @@
+{
+	"version": 2100,
+	"dependencies": {
+		"4D AIKit": {
+			"github": "4d/4D-AIKit",
+			"version": "latest"
+		},
+		"ollama": {
+			"github": "miyako/ollama",
+			"version": "latest"
+		}
+	}
+}

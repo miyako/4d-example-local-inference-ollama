@@ -1,0 +1,7 @@
+local-inference/userPreferences.*
+local-inference/Project/DerivedData/methodAttributes.json
+local-inference/Project/DerivedData/formAttributes.json
+local-inference/Data/*
+models/blobs/*
+models/elyza-8b-q4_k_m/Llama-3-ELYZA-JP-8B-q4_k_m.gguf
+models/manifests/registry.ollama.ai/library/elyza/jp8b
