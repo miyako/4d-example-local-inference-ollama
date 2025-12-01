@@ -5,16 +5,16 @@ kramdown:
   syntax_highlighter: rouge
 highlighter: rouge
 plugins_dir: _plugins
-baseurl: /grex
+baseurl: /4d-example-local-inference-ollama
 
-title: "grex"
-description: "Tool to generate regex from examples"
+title: "Ollama"
+description: "Use Ollama from 4D"
 logo: "/assets/logo.png"   # optional
 show_downloads: true       # controls the download links in header
 github:
   is_user_page: true
   owner_url: "https://github.com/miyako"
-  repository_url: "https://github.com/miyako/grex"
+  repository_url: "https://github.com/miyako/4d-example-local-inference-ollama"
   is_project_page: false
 
 exclude:
