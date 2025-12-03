@@ -8,7 +8,7 @@ layout: default
 
 # Use Ollama from 4D
 
-[dependencies](https://github.com/miyako/4d-example-local-inference/blob/main/local-inference/Project/Sources/dependencies.json)
+[dependencies](https://github.com/miyako/4d-example-local-inference-ollama/blob/main/local-inference/Project/Sources/dependencies.json)
 
 * [`miyako/ollama`](https://github.com/miyako/ollama)
 * [`4d/4D-AIKit`](https://github.com/4d/4D-AIKit)
