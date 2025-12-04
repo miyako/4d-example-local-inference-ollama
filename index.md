@@ -31,6 +31,45 @@ keep_alive: "5m"; \
 models: $folder})
 ```
 
+Instantiate `cs.ollama.ollama` and call `.pull()` to pull a public model from ollama.com:
+
+```4d
+#DECLARE($params : Object)
+
+If (Count parameters=0)
+    
+    CALL WORKER(1; Current method name; {})
+    
+Else 
+    
+    var $ollama : cs.ollama.ollama
+    $ollama:=cs.ollama.ollama.new()
+    $ollama.pull({name: "nomic-embed-text"; data: {message: "done!"}}; Formula(ALERT($2.context.message)))
+    
+End if 
+```
+
+If you have a `Modelfile`, you can add it to the list of models:
+
+```4d
+#DECLARE($params : Object)
+
+If (Count parameters=0)
+    
+    CALL WORKER(1; Current method name; {})
+    
+Else 
+    
+    var $file : 4D.File
+    $file:=Folder(Folder("/PACKAGE/").platformPath; fk platform path).parent.file("models/elyza-8b-q4_k_m/Modelfile")
+    
+    var $ollama : cs.ollama.ollama
+    $ollama:=cs.ollama.ollama.new()
+    $ollama.create({name: "elyza:jp8b"; file: $file; data: $file}; Formula(onResponse))
+    
+End if 
+```
+
 Now you can test the server:
 
 ```
