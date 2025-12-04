@@ -15,7 +15,7 @@ layout: default
 
 #### Start Ollama
 
-Typically in the *On Startup* database method:
+Instantiate `cs.ollama.server` and call `.start()` in your *On Startup* database method:
 
 ```4d
 var $folder : 4D.Folder
@@ -24,9 +24,6 @@ $folder:=Folder(Folder("/PACKAGE/").platformPath; fk platform path).parent.folde
 var $ollama : cs.ollama.server
 $ollama:=cs.ollama.server.new()
 
-var $isRunning : Boolean
-$isRunning:=$ollama.isRunning()
-
 $ollama.start({\
 host: "127.0.0.1:8080"; \
 content_length: 4096; \
@@ -34,11 +31,29 @@ keep_alive: "5m"; \
 models: $folder})
 ```
 
-Specify the folder where models are to be stored.
+Now you can test the server:
 
-#### Terminate Ollama
+```
+curl -X POST http://127.0.0.1:8080/v1/embeddings \
+     -H "Content-Type: application/json" \
+     -d '{"input":"The quick brown fox jumps over the lazy dog."}'
+```
 
-Typically in the *On Exit* database method:
+Or, use AI Kit:
+
+```4d
+var $AIClient : cs.AIKit.OpenAI
+$AIClient:=cs.AIKit.OpenAI.new()
+$AIClient.baseURL:="http://127.0.0.1:3000/v1"
+
+var $text : Text
+$text:="The quick brown fox jumps over the lazy dog."
+
+var $responseEmbeddings : cs.AIKit.OpenAIEmbeddingsResult
+$responseEmbeddings:=$AIClient.embeddings.create($text)
+```
+
+Finally to terminate the server:
 
 ```4d
 var $llama : cs.ollama.server
